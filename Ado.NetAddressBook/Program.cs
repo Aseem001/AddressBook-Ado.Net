@@ -25,6 +25,9 @@ namespace Ado.NetAddressBook
 
             //UC 5
             Console.WriteLine(addressBookRepo.DeleteContact("Virat Kohli")?"Contact deleted successfully":"Deletion failed");
+
+            //UC 6
+            addressBookRepo.RetrieveContactFromACityOrState();
         }
 
         /// <summary>
