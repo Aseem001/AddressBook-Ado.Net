@@ -15,19 +15,22 @@ namespace Ado.NetAddressBook
             AddressBookRepository addressBookRepo = new AddressBookRepository();
 
             //UC 2
-            addressBookRepo.GetAllContacts();
+            //addressBookRepo.GetAllContacts();
 
             //UC 3
-            AddNewContact();
+            //AddNewContact();
 
             //UC 4
-            Console.WriteLine(addressBookRepo.EditExistingContactUsingName("Virat","Kohli","PROFESSION")?"Update done successfully\n":"Update failed");
+            //Console.WriteLine(addressBookRepo.EditExistingContactUsingName("Virat","Kohli","PROFESSION")?"Update done successfully\n":"Update failed");
 
             //UC 5
-            Console.WriteLine(addressBookRepo.DeleteContact("Virat Kohli")?"Contact deleted successfully":"Deletion failed");
+            //Console.WriteLine(addressBookRepo.DeleteContact("Virat Kohli")?"Contact deleted successfully":"Deletion failed");
 
             //UC 6
-            addressBookRepo.RetrieveContactFromACityOrState();
+            //addressBookRepo.RetrieveContactFromACityOrState();
+
+            //UC 7
+            addressBookRepo.GetCountOfContactInCityOrState();
         }
 
         /// <summary>
