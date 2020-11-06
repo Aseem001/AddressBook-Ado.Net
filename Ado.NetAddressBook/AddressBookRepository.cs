@@ -155,5 +155,45 @@ namespace Ado.NetAddressBook
                     connection.Close();
             }
         }
+
+        /// <summary>
+        /// UC 5 : Deletes the contact with given full name.
+        /// </summary>
+        /// <param name="fullName">The full name.</param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public bool DeleteContact(string fullName)
+        {
+            string[] split = fullName.Split(" ");
+            string firstName = split[0];
+            string lastName = split[1];
+            DBConnection dbc = new DBConnection();
+            connection = dbc.GetConnection();
+            try
+            {
+                using (connection)
+                {
+                    connection.Open();
+                    string query = $@"delete from dbo.address_book where FirstName='{firstName}' and LastName='{lastName}'";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    var result = command.ExecuteNonQuery();
+                    connection.Close();
+                    if (result > 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (connection.State.Equals("Open"))
+                    connection.Close();
+            }
+        }
     }
 }
