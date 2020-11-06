@@ -13,8 +13,15 @@ namespace Ado.NetAddressBook
         static void Main(string[] args)
         {
             AddressBookRepository addressBookRepo = new AddressBookRepository();
-            addressBookRepo.GetAllContacts();
-            AddNewContact();
+
+            //UC 2
+            //addressBookRepo.GetAllContacts();
+
+            //UC 3
+            //AddNewContact();
+
+            //UC 4
+            Console.WriteLine(addressBookRepo.EditExistingContactUsingName("Virat","Kohli","PROFESSION")?"Update done successfully\n":"Update failed");
         }
 
         /// <summary>

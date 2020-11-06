@@ -116,5 +116,44 @@ namespace Ado.NetAddressBook
                     connection.Close();
             }
         }
+
+        /// <summary>
+        /// UC 4 : Edit the contactType of the existing contact.
+        /// </summary>
+        /// <param name="firstName">The first name.</param>
+        /// <param name="lastName">The last name.</param>
+        /// <param name="contactType">Type of the contact.</param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public bool EditExistingContactUsingName(string firstName,string lastName,string contactType)
+        {
+            DBConnection dbc = new DBConnection();
+            connection = dbc.GetConnection();
+            try
+            {
+                using (connection)
+                {
+                    connection.Open();
+                    string query = $@"update dbo.address_book set ContactType='{contactType}' where FirstName='{firstName}' and LastName='{lastName}'";
+                    SqlCommand command = new SqlCommand(query, connection);                   
+                    var result = command.ExecuteNonQuery();
+                    connection.Close();
+                    if (result > 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (connection.State.Equals("Open"))
+                    connection.Close();
+            }
+        }
     }
 }
